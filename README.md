@@ -1,5 +1,4 @@
-# 💻 Static Scenario Generator, for the generation of non randomised scenarios for GOBLIN
-
+# 💻 Scenario Assessment Tool for GOBLIN scenarios
  This module was constructed to assess and rank [GOBLIN](https://gmd.copernicus.org/articles/15/2239/2022/) (**G**eneral **O**verview for a **B**ackcasting approach of **L**ivestock **IN**tensification) scenarios.
 
 The latest iterations of GOBLIN systematically produce a range of environmental impacts, as well as livestock ouput data (total protein). Scenario outputs are ranked according to thier overall environmental change, and the change to the baseline livestock outouts. 
