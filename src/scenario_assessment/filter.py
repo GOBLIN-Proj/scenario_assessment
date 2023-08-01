@@ -245,8 +245,6 @@ class FilterResults:
 
             total_cost = frontier.combined_score_calculation(node.gas_change, node.eutrophication_cost, node.ammonia_cost, node.production_cost)
 
-            print(total_cost)
-
             costs.append(
                 (
                     node.scenario,
