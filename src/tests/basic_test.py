@@ -6,18 +6,21 @@ def main():
 
     path = "./data"
 
-    climate = pd.read_csv(os.path.join(path, "total_emissions.csv"), index_col =0)
-    eutrophication = pd.read_csv(os.path.join(path, "eutrophication_total.csv"), index_col =0)
-    air = pd.read_csv(os.path.join(path, "air_quality_total.csv"), index_col =0)
-    products = pd.read_csv(os.path.join(path, "beef_and_milk.csv"), index_col =0)
+    climate = pd.read_csv(os.path.join(path, "climate_change_totals.csv"), index_col =0)
+    eutrophication = pd.read_csv(os.path.join(path, "eutrophication_totals_test.csv"), index_col =0)
+    air = pd.read_csv(os.path.join(path, "air_quality_totals_test.csv"), index_col =0)
+    products = pd.read_csv(os.path.join(path, "protein_and_milk_summary.csv"), index_col =0)
+
+    
 
     emission_dict = {"climate_change": climate,
         "air_quality": air,
         "eutrophication":eutrophication,
         "protein_output": products}
 
+    print(emission_dict.items())
     target = 0.02
-    gas = "CH4"
+    gas = "CO2"
 
     filter_class = FilterResults(target, gas, emission_dict)
 

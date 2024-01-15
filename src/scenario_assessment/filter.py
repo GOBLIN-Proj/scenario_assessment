@@ -158,6 +158,7 @@ class FilterResults:
 
         starting_state = self.total_gwp_gas.loc[-1, self.gas]
 
+
         scenarios_df = pd.DataFrame(columns=["scenario", self.gas])
 
 
@@ -209,6 +210,8 @@ class FilterResults:
                 )
             )
 
+           
+
         # the explored set
         explored_nodes_matched = set()
         explored_nodes = set()
@@ -242,9 +245,9 @@ class FilterResults:
 
         costs = []
         for node in explored_nodes_matched:
-
+            
             total_cost = frontier.combined_score_calculation(node.gas_change, node.eutrophication_cost, node.ammonia_cost, node.production_cost)
-
+            
             costs.append(
                 (
                     node.scenario,
@@ -269,5 +272,10 @@ class FilterResults:
             keys[costs[index][0]]["eutrophication_change"] = costs[index][4]
             keys[costs[index][0]]["production_cost"] = costs[index][2]
             keys[costs[index][0]]["total_cost"] = costs[index][5]
+
+            # Check if the dictionary is empty
+        if not keys:
+            # Raise an exception to indicate an error condition
+            raise ValueError("No reductions in scenarios were identified.")
 
         return keys
