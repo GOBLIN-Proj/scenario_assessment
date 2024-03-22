@@ -1,4 +1,8 @@
 # 💻 Scenario Assessment Tool for GOBLIN scenarios
+[![license](https://img.shields.io/badge/License-MIT-red)](https://github.com/GOBLIN-Proj/scenario_assessment/blob/0.1.0/LICENSE)
+[![python](https://img.shields.io/badge/python-3.9-blue?logo=python&logoColor=white)](https://github.com/GOBLIN-Proj/scenario_assessment)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
  This module was constructed to assess and rank [GOBLIN](https://gmd.copernicus.org/articles/15/2239/2022/) (**G**eneral **O**verview for a **B**ackcasting approach of **L**ivestock **IN**tensification) scenarios.
 
 The latest iterations of GOBLIN systematically produce a range of environmental impacts, as well as livestock ouput data (total protein). Scenario outputs are ranked according to thier overall environmental change, and the change to the baseline livestock outouts. 
@@ -21,7 +25,7 @@ When prompted enter your ```<username>``` and password, which is your ```<access
 
 
 ```bash
-pip install "scenario_assessment@git+https://github.com/colmduff/scenario_assessment.git@main" 
+pip install "scenario_assessment@git+https://github.com/GOBLIN-Proj/scenario_assessment.git@main" 
 
 ```
 
