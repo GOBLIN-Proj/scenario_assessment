@@ -1,51 +1,85 @@
+"""
+Filter Results Module
+---------------------
+This module contains the FilterResults class, which is used to filter the results based on a particular gas reduction target.
+
+"""
+
 from scenario_assessment.filter_tools import Node, StackFrontier, ProteinCalc
 import pandas as pd
 
 class FilterResults:
-    """A class used to filter the results based on a particular gas reduction target. The class ranks the outputs that meet the selected
-    reduction target. Costing is calculated based on the impacts to overall livestock (beef and milk) outputs.
+    """
+    A class used to filter results based on a specified target for greenhouse gas reduction. It ranks scenarios based on their ability
+    to meet the reduction target while minimizing impacts on livestock outputs (beef and milk).
 
     Attributes
     ----------
-    target: float
-        the percentage reduction to be achieved, input as a value between 0 and 1
-
-    gas: str
-        the green house gas that is the subject of analysis (CH4, N2O, CO2, CO2e)
-
-    total_gwp_gas: dataframe
-        A dataframe that contains the greenhouse gas emissions for each scenario and the baseline.
-
-    total_ammonia_gas: dataframe
-        A dataframe that contains the ammonia emissions for each scenario and the baseline.
-
-    total_eutrophication: dataframe
-        A dataframe that contains the eutrophication emissions for each scenario and the baseline.
-
-    livestock_products: dataframe
-        A dataframe that contains the total beef and milk output for each scenario and the baseline.
-
+    target : float
+        The target percentage reduction to be achieved, input as a value between 0 and 1.
+    gas : str
+        The greenhouse gas that is the subject of analysis (e.g., CH4, N2O, CO2, CO2e).
+    total_gwp_gas : DataFrame
+        A dataframe containing the greenhouse gas emissions for each scenario compared to the baseline.
+    total_ammonia_gas : DataFrame
+        A dataframe containing the ammonia emissions for each scenario compared to the baseline.
+    total_eutrophication : DataFrame
+        A dataframe containing the eutrophication emissions for each scenario compared to the baseline.
+    livestock_products : DataFrame
+        A dataframe containing the total beef and milk output for each scenario compared to the baseline.
+    climate_weight : float, optional
+        The weighting applied to the climate change impact in the overall score. Default is None.
+    ammonia_weight : float, optional
+        The weighting applied to the ammonia emissions impact in the overall score. Default is None.
+    eutrophication_weight : float, optional
+        The weighting applied to the eutrophication impact in the overall score. Default is None.
 
     Methods
     -------
-    target():
-        set the percentage reduction, requires a value between 0 and 1.
+    target(value):
+        Sets the percentage reduction target. Requires a value between 0 and 1.
 
-    gas():
-        sets the target gas, value passed as str.
+    gas(value):
+        Sets the target greenhouse gas. The value is passed as a string.
 
     search():
-        returns a nested dictionary containing the rank, gas and percentage reductions in emissions relative to the baseline.
+        Filters scenarios based on the specified reduction target and ranks them according to their impact on livestock outputs 
+        and environmental factors. Returns a nested dictionary containing the rankings, target gas, and percentage reductions in 
+        emissions relative to the baseline.
 
+    Raises
+    ------
+    ValueError:
+        If the sum of the environmental impact weights (climate, ammonia, eutrophication) exceeds 1.
+
+    Example
+    -------
+    >>> data_dict = {
+            "climate_change": df_climate,
+            "air_quality": df_ammonia,
+            "eutrophication": df_eutrophication,
+            "protein_output": df_livestock
+        }
+    >>> filter_results = FilterResults(0.25, 'CO2e', data_dict)
+    >>> filter_results.search()
     """
 
-    def __init__(self, target, gas, data_dict):
+    def __init__(self, target, gas, data_dict, climate_weight=None, ammonia_weight=None, eutrophication_weight=None):
         self.target = float(target)
         self.gas = gas
         self.total_gwp_gas = data_dict["climate_change"]
         self.total_ammonia_gas = data_dict["air_quality"]
         self.total_eutrophication = data_dict["eutrophication"]
         self.livestock_products = data_dict["protein_output"]
+        self.climate_weight = climate_weight
+        self.ammonia_weight = ammonia_weight
+        self.eutrophication_weight = eutrophication_weight
+
+        # Validate that the sum of the weights does not exceed 1
+        total_weight = self.climate_weight + self.eutrophication_weight + self.ammonia_weight
+
+        if total_weight > 1:
+            raise ValueError(f"The sum of the weights ({total_weight}) exceeds 1. Adjust the weights so their sum does not exceed 1.")
 
 
     @property  # getter
@@ -125,34 +159,42 @@ class FilterResults:
 
 
     def search(self):
-        """Filters through the results and gathers the scenarios that meet or exceed the target reduction in the
-        specified gas. Each scenario is assigned a cost based on the over all reduction in livestock output (combined milk and beef).
-        Scenarios that meet the target and minimise reductions in livestock output are ranked higher than those that have greater reductions
-        in livestock outputs.
+        """
+        Searches through greenhouse gas reduction scenarios to identify those that meet or exceed a target reduction 
+        in a specified greenhouse gas, considering the environmental and economic impacts on livestock production.
+        Each scenario is evaluated based on the overall reduction in livestock output, including both milk and beef, 
+        converted to total protein as per EU commission standards. Additionally, the method assesses the percentage 
+        reduction in ammonia emissions and eutrophication.
 
-        Milk and beef are converted to total protein, based on data provided by the EU commission. Protein values for Milk (3.5% fat, boiled)
-        and beef (average) are given as 3.1 and 16.9 g/100 gram, respectively.
+        The method ranks scenarios based on their ability to minimize reductions in livestock output while meeting 
+        greenhouse gas reduction targets. It utilizes internal class attributes for environmental and production data 
+        analysis. Results can be visualized using the 'rank_chart' method in the DataGrapher.
 
-        Further, the over percetange reduction eutrophication and ammonia emissions are also returned as part of the dictionary.
+        Returns:
+            dict: A dictionary containing ranked scenarios with the following keys:
+                'rank': The scenario's rank based on the combined environmental and production cost.
+                'gas': The target greenhouse gas.
+                'gas_change': The percentage reduction in the target gas compared to the base scenario.
+                'ammonia_change': Percentage reduction in ammonia emissions compared to the base scenario.
+                'eutrophication_change': Reduction in eutrophication emissions compared to the base scenario.
+                'production_cost': The cost impact on livestock outputs.
+                'total_cost': Combined environmental and production cost.
 
-        These outputs can all be plotted using the rank_chart method in the DataGrapher.
+        Raises:
+            ValueError: If no scenarios meet the reduction criteria.
 
-        Parameters
-        ----------
-        None
+        Examples:
+            >>> target_reduction = 0.02
+            >>> target_gas = "CO2e"
+            >>> filter_results = FilterResults(target_reduction, target_gas)
+            >>> result = filter_results.search()
+            >>> print(result)
 
-        Returns
-        -------
-        None
-
-        Examples
-        --------
-        >>> target = 0.02
-            gas = "CO2e"
-
-            filter = Filter_results(target, gas)
-
-            result = filter.search()
+        Note:
+            This method assumes the presence of class attributes such as 'total_gwp_gas' and 'livestock_products' 
+            containing the necessary environmental and livestock production data, respectively. It also relies on 
+            methods like 'env_cost_calculation' and 'production_cost_calculation' for calculating the environmental 
+            and production costs associated with each scenario.
         """
         calculator = ProteinCalc()
 
@@ -246,7 +288,9 @@ class FilterResults:
         costs = []
         for node in explored_nodes_matched:
             
-            total_cost = frontier.combined_score_calculation(node.gas_change, node.eutrophication_cost, node.ammonia_cost, node.production_cost)
+            total_cost = frontier.combined_score_calculation(node.gas_change, node.eutrophication_cost, 
+                                                             node.ammonia_cost, node.production_cost, 
+                                                             self.climate_weight, self.eutrophication_weight, self.ammonia_weight)
             
             costs.append(
                 (

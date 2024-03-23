@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scenario_assessment.filter &mdash; Scenario Assessment 0.1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=92734c54"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="scenario_assessment.filter_tools" href="../filter_tools/index.html" />
+    <link rel="prev" title="scenario_assessment" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Scenario Assessment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scenario_assessment</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scenario_assessment.filter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../filter_tools/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scenario_assessment.filter_tools</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Scenario Assessment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scenario_assessment</span></code></a></li>
+      <li class="breadcrumb-item active"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scenario_assessment.filter</span></code></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/autoapi/scenario_assessment/filter/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-scenario_assessment.filter">
+<span id="scenario-assessment-filter"></span><h1><a class="reference internal" href="#module-scenario_assessment.filter" title="scenario_assessment.filter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scenario_assessment.filter</span></code></a><a class="headerlink" href="#module-scenario_assessment.filter" title="Link to this heading"></a></h1>
+<section id="filter-results-module">
+<p>This module contains the FilterResults class, which is used to filter the results based on a particular gas reduction target.</p>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#scenario_assessment.filter.FilterResults" title="scenario_assessment.filter.FilterResults"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FilterResults</span></code></a></p></td>
+<td><p>A class used to filter results based on a specified target for greenhouse gas reduction. It ranks scenarios based on their ability</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="scenario_assessment.filter.FilterResults">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scenario_assessment.filter.</span></span><span class="sig-name descname"><span class="pre">FilterResults</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">climate_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ammonia_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eutrophication_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/scenario_assessment/filter.html#FilterResults"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scenario_assessment.filter.FilterResults" title="Link to this definition"></a></dt>
+<dd><p>A class used to filter results based on a specified target for greenhouse gas reduction. It ranks scenarios based on their ability
+to meet the reduction target while minimizing impacts on livestock outputs (beef and milk).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scenario_assessment.filter.FilterResults.target">
+<span class="sig-name descname"><span class="pre">target</span></span><a class="headerlink" href="#scenario_assessment.filter.FilterResults.target" title="Link to this definition"></a></dt>
+<dd><p>The target percentage reduction to be achieved, input as a value between 0 and 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scenario_assessment.filter.FilterResults.gas">
+<span class="sig-name descname"><span class="pre">gas</span></span><a class="headerlink" href="#scenario_assessment.filter.FilterResults.gas" title="Link to this definition"></a></dt>
+<dd><p>The greenhouse gas that is the subject of analysis (e.g., CH4, N2O, CO2, CO2e).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scenario_assessment.filter.FilterResults.total_gwp_gas">
+<span class="sig-name descname"><span class="pre">total_gwp_gas</span></span><a class="headerlink" href="#scenario_assessment.filter.FilterResults.total_gwp_gas" title="Link to this definition"></a></dt>
+<dd><p>A dataframe containing the greenhouse gas emissions for each scenario compared to the baseline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scenario_assessment.filter.FilterResults.total_ammonia_gas">
+<span class="sig-name descname"><span class="pre">total_ammonia_gas</span></span><a class="headerlink" href="#scenario_assessment.filter.FilterResults.total_ammonia_gas" title="Link to this definition"></a></dt>
+<dd><p>A dataframe containing the ammonia emissions for each scenario compared to the baseline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scenario_assessment.filter.FilterResults.total_eutrophication">
+<span class="sig-name descname"><span class="pre">total_eutrophication</span></span><a class="headerlink" href="#scenario_assessment.filter.FilterResults.total_eutrophication" title="Link to this definition"></a></dt>
+<dd><p>A dataframe containing the eutrophication emissions for each scenario compared to the baseline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scenario_assessment.filter.FilterResults.livestock_products">
+<span class="sig-name descname"><span class="pre">livestock_products</span></span><a class="headerlink" href="#scenario_assessment.filter.FilterResults.livestock_products" title="Link to this definition"></a></dt>
+<dd><p>A dataframe containing the total beef and milk output for each scenario compared to the baseline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scenario_assessment.filter.FilterResults.climate_weight">
+<span class="sig-name descname"><span class="pre">climate_weight</span></span><a class="headerlink" href="#scenario_assessment.filter.FilterResults.climate_weight" title="Link to this definition"></a></dt>
+<dd><p>The weighting applied to the climate change impact in the overall score. Default is None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scenario_assessment.filter.FilterResults.ammonia_weight">
+<span class="sig-name descname"><span class="pre">ammonia_weight</span></span><a class="headerlink" href="#scenario_assessment.filter.FilterResults.ammonia_weight" title="Link to this definition"></a></dt>
+<dd><p>The weighting applied to the ammonia emissions impact in the overall score. Default is None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scenario_assessment.filter.FilterResults.eutrophication_weight">
+<span class="sig-name descname"><span class="pre">eutrophication_weight</span></span><a class="headerlink" href="#scenario_assessment.filter.FilterResults.eutrophication_weight" title="Link to this definition"></a></dt>
+<dd><p>The weighting applied to the eutrophication impact in the overall score. Default is None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">target(value):</span></span></dt>
+<dd><p>Sets the percentage reduction target. Requires a value between 0 and 1.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">gas(value):</span></span></dt>
+<dd><p>Sets the target greenhouse gas. The value is passed as a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">search():</span></span></dt>
+<dd><p>Filters scenarios based on the specified reduction target and ranks them according to their impact on livestock outputs
+and environmental factors. Returns a nested dictionary containing the rankings, target gas, and percentage reductions in
+emissions relative to the baseline.</p>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError:</strong> – If the sum of the environmental impact weights (climate, ammonia, eutrophication) exceeds 1.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span>
+<span class="go">        &quot;climate_change&quot;: df_climate,</span>
+<span class="go">        &quot;air_quality&quot;: df_ammonia,</span>
+<span class="go">        &quot;eutrophication&quot;: df_eutrophication,</span>
+<span class="go">        &quot;protein_output&quot;: df_livestock</span>
+<span class="go">    }</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filter_results</span> <span class="o">=</span> <span class="n">FilterResults</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="s1">&#39;CO2e&#39;</span><span class="p">,</span> <span class="n">data_dict</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filter_results</span><span class="o">.</span><span class="n">search</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">target</span></span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id1">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gas</span></span><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scenario_assessment.filter.FilterResults.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/scenario_assessment/filter.html#FilterResults.search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scenario_assessment.filter.FilterResults.search" title="Link to this definition"></a></dt>
+<dd><p>Searches through greenhouse gas reduction scenarios to identify those that meet or exceed a target reduction
+in a specified greenhouse gas, considering the environmental and economic impacts on livestock production.
+Each scenario is evaluated based on the overall reduction in livestock output, including both milk and beef,
+converted to total protein as per EU commission standards. Additionally, the method assesses the percentage
+reduction in ammonia emissions and eutrophication.</p>
+<p>The method ranks scenarios based on their ability to minimize reductions in livestock output while meeting
+greenhouse gas reduction targets. It utilizes internal class attributes for environmental and production data
+analysis. Results can be visualized using the ‘rank_chart’ method in the DataGrapher.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A dictionary containing ranked scenarios with the following keys:</dt><dd><p>’rank’: The scenario’s rank based on the combined environmental and production cost.
+‘gas’: The target greenhouse gas.
+‘gas_change’: The percentage reduction in the target gas compared to the base scenario.
+‘ammonia_change’: Percentage reduction in ammonia emissions compared to the base scenario.
+‘eutrophication_change’: Reduction in eutrophication emissions compared to the base scenario.
+‘production_cost’: The cost impact on livestock outputs.
+‘total_cost’: Combined environmental and production cost.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If no scenarios meet the reduction criteria.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">target_reduction</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target_gas</span> <span class="o">=</span> <span class="s2">&quot;CO2e&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filter_results</span> <span class="o">=</span> <span class="n">FilterResults</span><span class="p">(</span><span class="n">target_reduction</span><span class="p">,</span> <span class="n">target_gas</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">filter_results</span><span class="o">.</span><span class="n">search</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method assumes the presence of class attributes such as ‘total_gwp_gas’ and ‘livestock_products’
+containing the necessary environmental and livestock production data, respectively. It also relies on
+methods like ‘env_cost_calculation’ and ‘production_cost_calculation’ for calculating the environmental
+and production costs associated with each scenario.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="scenario_assessment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../filter_tools/index.html" class="btn btn-neutral float-right" title="scenario_assessment.filter_tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Colm Duffy.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

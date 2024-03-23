@@ -1,0 +1,165 @@
+:py:mod:`scenario_assessment.filter`
+====================================
+
+.. py:module:: scenario_assessment.filter
+
+.. autoapi-nested-parse::
+
+   Filter Results Module
+   ---------------------
+   This module contains the FilterResults class, which is used to filter the results based on a particular gas reduction target.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   scenario_assessment.filter.FilterResults
+
+
+
+
+.. py:class:: FilterResults(target, gas, data_dict, climate_weight=None, ammonia_weight=None, eutrophication_weight=None)
+
+
+   A class used to filter results based on a specified target for greenhouse gas reduction. It ranks scenarios based on their ability
+   to meet the reduction target while minimizing impacts on livestock outputs (beef and milk).
+
+   .. attribute:: target
+
+      The target percentage reduction to be achieved, input as a value between 0 and 1.
+
+      :type: float
+
+   .. attribute:: gas
+
+      The greenhouse gas that is the subject of analysis (e.g., CH4, N2O, CO2, CO2e).
+
+      :type: str
+
+   .. attribute:: total_gwp_gas
+
+      A dataframe containing the greenhouse gas emissions for each scenario compared to the baseline.
+
+      :type: DataFrame
+
+   .. attribute:: total_ammonia_gas
+
+      A dataframe containing the ammonia emissions for each scenario compared to the baseline.
+
+      :type: DataFrame
+
+   .. attribute:: total_eutrophication
+
+      A dataframe containing the eutrophication emissions for each scenario compared to the baseline.
+
+      :type: DataFrame
+
+   .. attribute:: livestock_products
+
+      A dataframe containing the total beef and milk output for each scenario compared to the baseline.
+
+      :type: DataFrame
+
+   .. attribute:: climate_weight
+
+      The weighting applied to the climate change impact in the overall score. Default is None.
+
+      :type: float, optional
+
+   .. attribute:: ammonia_weight
+
+      The weighting applied to the ammonia emissions impact in the overall score. Default is None.
+
+      :type: float, optional
+
+   .. attribute:: eutrophication_weight
+
+      The weighting applied to the eutrophication impact in the overall score. Default is None.
+
+      :type: float, optional
+
+   .. method:: target(value):
+
+      Sets the percentage reduction target. Requires a value between 0 and 1.
+
+
+   .. method:: gas(value):
+
+      Sets the target greenhouse gas. The value is passed as a string.
+
+
+   .. method:: search():
+
+      Filters scenarios based on the specified reduction target and ranks them according to their impact on livestock outputs
+      and environmental factors. Returns a nested dictionary containing the rankings, target gas, and percentage reductions in
+      emissions relative to the baseline.
+
+
+   :raises ValueError:: If the sum of the environmental impact weights (climate, ammonia, eutrophication) exceeds 1.
+
+   .. rubric:: Example
+
+   >>> data_dict = {
+           "climate_change": df_climate,
+           "air_quality": df_ammonia,
+           "eutrophication": df_eutrophication,
+           "protein_output": df_livestock
+       }
+   >>> filter_results = FilterResults(0.25, 'CO2e', data_dict)
+   >>> filter_results.search()
+
+   .. py:property:: target
+
+
+   .. py:property:: gas
+
+
+   .. py:method:: search()
+
+      Searches through greenhouse gas reduction scenarios to identify those that meet or exceed a target reduction
+      in a specified greenhouse gas, considering the environmental and economic impacts on livestock production.
+      Each scenario is evaluated based on the overall reduction in livestock output, including both milk and beef,
+      converted to total protein as per EU commission standards. Additionally, the method assesses the percentage
+      reduction in ammonia emissions and eutrophication.
+
+      The method ranks scenarios based on their ability to minimize reductions in livestock output while meeting
+      greenhouse gas reduction targets. It utilizes internal class attributes for environmental and production data
+      analysis. Results can be visualized using the 'rank_chart' method in the DataGrapher.
+
+      :returns:
+
+                A dictionary containing ranked scenarios with the following keys:
+                    'rank': The scenario's rank based on the combined environmental and production cost.
+                    'gas': The target greenhouse gas.
+                    'gas_change': The percentage reduction in the target gas compared to the base scenario.
+                    'ammonia_change': Percentage reduction in ammonia emissions compared to the base scenario.
+                    'eutrophication_change': Reduction in eutrophication emissions compared to the base scenario.
+                    'production_cost': The cost impact on livestock outputs.
+                    'total_cost': Combined environmental and production cost.
+      :rtype: dict
+
+      :raises ValueError: If no scenarios meet the reduction criteria.
+
+      .. rubric:: Examples
+
+      >>> target_reduction = 0.02
+      >>> target_gas = "CO2e"
+      >>> filter_results = FilterResults(target_reduction, target_gas)
+      >>> result = filter_results.search()
+      >>> print(result)
+
+      .. note::
+
+         This method assumes the presence of class attributes such as 'total_gwp_gas' and 'livestock_products'
+         containing the necessary environmental and livestock production data, respectively. It also relies on
+         methods like 'env_cost_calculation' and 'production_cost_calculation' for calculating the environmental
+         and production costs associated with each scenario.
+
+
+
