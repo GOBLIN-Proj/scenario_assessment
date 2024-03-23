@@ -20,9 +20,15 @@ def main():
 
     print(emission_dict.items())
     target = 0.02
-    gas = "CO2"
+    gas = "CH4"
 
-    filter_class = FilterResults(target, gas, emission_dict)
+    climate = 0.3
+    eutrophication = 0.3
+    ammonia = 0.7
+
+    filter_class = FilterResults(target, gas, emission_dict, climate, eutrophication, ammonia)
+
+    print(filter_class.climate_weight)
 
     print(filter_class.total_gwp_gas)
 

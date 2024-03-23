@@ -1,0 +1,218 @@
+:py:mod:`scenario_assessment.filter_tools`
+==========================================
+
+.. py:module:: scenario_assessment.filter_tools
+
+.. autoapi-nested-parse::
+
+   Filter tools Module
+   -------------------
+
+   This module contains the classes and functions that are used to filter the scenarios based on the user inputs.
+
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   scenario_assessment.filter_tools.Node
+   scenario_assessment.filter_tools.StackFrontier
+   scenario_assessment.filter_tools.ProteinCalc
+
+
+
+
+.. py:class:: Node(state, scenario, gas_change, production_cost, ammonia_cost, eutrophication_cost)
+
+
+   A node representing a specific scenario in environmental impact and cost analysis.
+
+   :param state: The current state or value (e.g., current greenhouse gas emissions).
+   :type state: float
+   :param scenario: The name or identifier of the scenario being considered.
+   :type scenario: str
+   :param gas_change: The percentage change in greenhouse gas emissions for the scenario.
+   :type gas_change: float
+   :param production_cost: The change in production cost (as a percentage) associated with the scenario.
+   :type production_cost: float
+   :param ammonia_cost: The change in cost (as a percentage) associated with ammonia emissions for the scenario.
+   :type ammonia_cost: float
+   :param eutrophication_cost: The change in cost (as a percentage) associated with eutrophication for the scenario.
+   :type eutrophication_cost: float
+
+
+.. py:class:: StackFrontier
+
+
+   A class to manage the frontier in a depth-first search algorithm.
+
+   .. attribute:: frontier
+
+      A list of Node objects that are yet to be explored.
+
+      :type: list
+
+   .. py:method:: add(node)
+
+      Add a new node to the frontier.
+
+      :param node: The node to be added to the frontier.
+      :type node: Node
+
+
+   .. py:method:: contains_state(state)
+
+      Check if any node in the frontier has a particular state.
+
+      :param state: The state to be checked.
+      :type state: float
+
+      :returns: True if a node with the state exists in the frontier; False otherwise.
+      :rtype: bool
+
+
+   .. py:method:: empty()
+
+      Check if the frontier is empty.
+
+      :returns: True if the frontier is empty; False otherwise.
+      :rtype: bool
+
+
+   .. py:method:: delete(node)
+
+      Remove a node from the frontier.
+
+      :param node: The node to be removed.
+      :type node: Node
+
+      :raises Exception: If the frontier is already empty.
+
+
+   .. py:method:: length()
+
+      Get the current length of the frontier.
+
+      :returns: The number of nodes currently in the frontier.
+      :rtype: int
+
+
+   .. py:method:: production_cost_calculation(sc_inputs, base_inputs)
+      :staticmethod:
+
+      Calculate the change in production costs.
+
+      :param sc_inputs: The scenario's input value (e.g., protein production).
+      :type sc_inputs: float
+      :param base_inputs: The base case input value for comparison.
+      :type base_inputs: float
+
+      :returns: The percentage change in production costs.
+      :rtype: float
+
+
+   .. py:method:: env_cost_calculation(sc_inputs, base_inputs)
+      :staticmethod:
+
+      Calculate the environmental cost change.
+
+      :param sc_inputs: The scenario's environmental metric (e.g., ammonia or eutrophication levels).
+      :type sc_inputs: float
+      :param base_inputs: The base case environmental metric for comparison.
+      :type base_inputs: float
+
+      :returns: The percentage change in environmental costs.
+      :rtype: float
+
+
+   .. py:method:: combined_score_calculation(climate, eutrophication, ammonia, production_cost, climate_weight=None, eutrophication_weight=None, ammonia_weight=None)
+      :staticmethod:
+
+      Calculate a combined environmental and production score for a scenario.
+
+      This function calculates a weighted score based on changes in climate impact, eutrophication,
+      ammonia emissions, and production costs. Users can provide custom weights for climate, eutrophication,
+      and ammonia impacts. If provided, the sum of these weights must not exceed one to ensure a balanced
+      approach to environmental factors. The total score combines these environmental scores with the
+      absolute value of the production cost change.
+
+      :param climate: The change in climate impact (e.g., greenhouse gas emissions).
+      :type climate: float
+      :param eutrophication: The change in eutrophication impact.
+      :type eutrophication: float
+      :param ammonia: The change in ammonia emissions.
+      :type ammonia: float
+      :param production_cost: The change in production costs.
+      :type production_cost: float
+      :param climate_weight: The weight for the climate change impact. Defaults to 0.4.
+      :type climate_weight: float, optional
+      :param eutrophication_weight: The weight for the eutrophication impact. Defaults to 0.3.
+      :type eutrophication_weight: float, optional
+      :param ammonia_weight: The weight for the ammonia emissions impact. Defaults to 0.3.
+      :type ammonia_weight: float, optional
+
+      :returns: The total combined score, taking into account both environmental impacts and production costs.
+      :rtype: float
+
+
+
+.. py:class:: ProteinCalc(milk_protein=None, beef_protein=None)
+
+
+   A class used to calculate the protein content from milk and beef based on predefined or user-defined protein values.
+
+   .. attribute:: milk_protein
+
+      The amount of protein (in grams) per 100 grams of milk. Default value is set based on typical protein content.
+
+      :type: float
+
+   .. attribute:: beef_protein
+
+      The amount of protein (in grams) per 100 grams of beef. Default value is set based on typical protein content.
+
+      :type: float
+
+   .. method:: milk_protein_calculator(milk):
+
+      Calculates the total protein content in a given quantity of milk.
+
+
+   .. method:: beef_protein_calculator(beef):
+
+      Calculates the total protein content in a given quantity of beef.
+
+
+   :param milk_protein: The protein content percentage for milk. If not provided, defaults to a typical value.
+   :type milk_protein: float, optional
+   :param beef_protein: The protein content percentage for beef. If not provided, defaults to a typical value.
+   :type beef_protein: float, optional
+
+   .. py:method:: milk_protein_calculator(milk)
+
+      Calculate the total protein content based on the quantity of milk.
+
+      :param milk: The quantity of milk (in grams) for which the protein content is to be calculated.
+      :type milk: float
+
+      :returns: The total protein content (in grams) in the specified quantity of milk.
+      :rtype: float
+
+
+   .. py:method:: beef_protein_calculator(beef)
+
+      Calculate the total protein content based on the quantity of beef.
+
+      :param beef: The quantity of beef (in grams) for which the protein content is to be calculated.
+      :type beef: float
+
+      :returns: The total protein content (in grams) in the specified quantity of beef.
+      :rtype: float
+
+
+

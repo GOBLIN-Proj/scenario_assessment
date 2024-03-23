@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scenario_assessment.filter_tools &mdash; Scenario Assessment 0.1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=92734c54"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Scenario Assessment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Scenario Assessment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">scenario_assessment.filter_tools</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for scenario_assessment.filter_tools</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Filter tools Module</span>
+<span class="sd">-------------------</span>
+
+<span class="sd">This module contains the classes and functions that are used to filter the scenarios based on the user inputs.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Node">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.Node">[docs]</a>
+<span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A node representing a specific scenario in environmental impact and cost analysis.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    state : float</span>
+<span class="sd">        The current state or value (e.g., current greenhouse gas emissions).</span>
+<span class="sd">    scenario : str</span>
+<span class="sd">        The name or identifier of the scenario being considered.</span>
+<span class="sd">    gas_change : float</span>
+<span class="sd">        The percentage change in greenhouse gas emissions for the scenario.</span>
+<span class="sd">    production_cost : float</span>
+<span class="sd">        The change in production cost (as a percentage) associated with the scenario.</span>
+<span class="sd">    ammonia_cost : float</span>
+<span class="sd">        The change in cost (as a percentage) associated with ammonia emissions for the scenario.</span>
+<span class="sd">    eutrophication_cost : float</span>
+<span class="sd">        The change in cost (as a percentage) associated with eutrophication for the scenario.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">scenario</span><span class="p">,</span> <span class="n">gas_change</span><span class="p">,</span> <span class="n">production_cost</span><span class="p">,</span> <span class="n">ammonia_cost</span><span class="p">,</span> <span class="n">eutrophication_cost</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scenario</span> <span class="o">=</span> <span class="n">scenario</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gas_change</span> <span class="o">=</span> <span class="n">gas_change</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">production_cost</span> <span class="o">=</span> <span class="n">production_cost</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ammonia_cost</span> <span class="o">=</span> <span class="n">ammonia_cost</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eutrophication_cost</span> <span class="o">=</span> <span class="n">eutrophication_cost</span></div>
+
+
+
+<div class="viewcode-block" id="StackFrontier">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.StackFrontier">[docs]</a>
+<span class="k">class</span> <span class="nc">StackFrontier</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to manage the frontier in a depth-first search algorithm.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    frontier : list</span>
+<span class="sd">        A list of Node objects that are yet to be explored.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frontier</span> <span class="o">=</span> <span class="p">[]</span>
+
+<div class="viewcode-block" id="StackFrontier.add">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.StackFrontier.add">[docs]</a>
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a new node to the frontier.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        node : Node</span>
+<span class="sd">            The node to be added to the frontier.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frontier</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StackFrontier.contains_state">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.StackFrontier.contains_state">[docs]</a>
+    <span class="k">def</span> <span class="nf">contains_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if any node in the frontier has a particular state.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        state : float</span>
+<span class="sd">            The state to be checked.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if a node with the state exists in the frontier; False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="n">state</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">frontier</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StackFrontier.empty">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.StackFrontier.empty">[docs]</a>
+    <span class="k">def</span> <span class="nf">empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if the frontier is empty.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            True if the frontier is empty; False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frontier</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="StackFrontier.delete">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.StackFrontier.delete">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove a node from the frontier.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        node : Node</span>
+<span class="sd">            The node to be removed.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        Exception</span>
+<span class="sd">            If the frontier is already empty.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;empty frontier&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">frontier</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="StackFrontier.length">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.StackFrontier.length">[docs]</a>
+    <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the current length of the frontier.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        int</span>
+<span class="sd">            The number of nodes currently in the frontier.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frontier</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="StackFrontier.production_cost_calculation">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.StackFrontier.production_cost_calculation">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">production_cost_calculation</span><span class="p">(</span><span class="n">sc_inputs</span><span class="p">,</span> <span class="n">base_inputs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the change in production costs.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        sc_inputs : float</span>
+<span class="sd">            The scenario&#39;s input value (e.g., protein production).</span>
+<span class="sd">        base_inputs : float</span>
+<span class="sd">            The base case input value for comparison.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The percentage change in production costs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">((</span><span class="n">sc_inputs</span> <span class="o">-</span> <span class="n">base_inputs</span><span class="p">)</span> <span class="o">/</span> <span class="n">base_inputs</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span></div>
+
+
+
+<div class="viewcode-block" id="StackFrontier.env_cost_calculation">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.StackFrontier.env_cost_calculation">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">env_cost_calculation</span><span class="p">(</span><span class="n">sc_inputs</span><span class="p">,</span> <span class="n">base_inputs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the environmental cost change.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        sc_inputs : float</span>
+<span class="sd">            The scenario&#39;s environmental metric (e.g., ammonia or eutrophication levels).</span>
+<span class="sd">        base_inputs : float</span>
+<span class="sd">            The base case environmental metric for comparison.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The percentage change in environmental costs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="p">((</span><span class="n">sc_inputs</span> <span class="o">-</span> <span class="n">base_inputs</span><span class="p">)</span> <span class="o">/</span> <span class="n">base_inputs</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+        <span class="k">return</span> <span class="n">cost</span></div>
+
+    
+<div class="viewcode-block" id="StackFrontier.combined_score_calculation">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.StackFrontier.combined_score_calculation">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">combined_score_calculation</span><span class="p">(</span><span class="n">climate</span><span class="p">,</span> <span class="n">eutrophication</span><span class="p">,</span> <span class="n">ammonia</span><span class="p">,</span> <span class="n">production_cost</span><span class="p">,</span> <span class="n">climate_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">eutrophication_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ammonia_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate a combined environmental and production score for a scenario.</span>
+
+<span class="sd">        This function calculates a weighted score based on changes in climate impact, eutrophication, </span>
+<span class="sd">        ammonia emissions, and production costs. Users can provide custom weights for climate, eutrophication, </span>
+<span class="sd">        and ammonia impacts. If provided, the sum of these weights must not exceed one to ensure a balanced </span>
+<span class="sd">        approach to environmental factors. The total score combines these environmental scores with the </span>
+<span class="sd">        absolute value of the production cost change.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        climate : float</span>
+<span class="sd">            The change in climate impact (e.g., greenhouse gas emissions).</span>
+<span class="sd">        eutrophication : float</span>
+<span class="sd">            The change in eutrophication impact.</span>
+<span class="sd">        ammonia : float</span>
+<span class="sd">            The change in ammonia emissions.</span>
+<span class="sd">        production_cost : float</span>
+<span class="sd">            The change in production costs.</span>
+<span class="sd">        climate_weight : float, optional</span>
+<span class="sd">            The weight for the climate change impact. Defaults to 0.4.</span>
+<span class="sd">        eutrophication_weight : float, optional</span>
+<span class="sd">            The weight for the eutrophication impact. Defaults to 0.3.</span>
+<span class="sd">        ammonia_weight : float, optional</span>
+<span class="sd">            The weight for the ammonia emissions impact. Defaults to 0.3.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The total combined score, taking into account both environmental impacts and production costs. </span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Set default weights if none provided</span>
+        <span class="n">climate_weight</span> <span class="o">=</span> <span class="n">climate_weight</span> <span class="ow">or</span> <span class="mf">0.4</span>
+        <span class="n">eutrophication_weight</span> <span class="o">=</span> <span class="n">eutrophication_weight</span> <span class="ow">or</span> <span class="mf">0.3</span>
+        <span class="n">ammonia_weight</span> <span class="o">=</span> <span class="n">ammonia_weight</span> <span class="ow">or</span> <span class="mf">0.3</span>
+
+        <span class="n">env_score</span> <span class="o">=</span> <span class="p">(</span><span class="n">climate</span> <span class="o">*</span> <span class="n">climate_weight</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">eutrophication</span> <span class="o">*</span> <span class="n">eutrophication_weight</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">ammonia</span> <span class="o">*</span> <span class="n">ammonia_weight</span><span class="p">)</span>
+        <span class="n">production_score</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">production_cost</span><span class="p">)</span>  <span class="c1"># Consider normalizing this if necessary</span>
+
+        <span class="n">total_score</span> <span class="o">=</span> <span class="n">production_score</span> <span class="o">+</span> <span class="n">env_score</span>  <span class="c1"># Combine scores from environmental and production impacts</span>
+
+        <span class="k">return</span> <span class="n">total_score</span></div>
+</div>
+
+
+<div class="viewcode-block" id="ProteinCalc">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.ProteinCalc">[docs]</a>
+<span class="k">class</span> <span class="nc">ProteinCalc</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class used to calculate the protein content from milk and beef based on predefined or user-defined protein values.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    milk_protein : float</span>
+<span class="sd">        The amount of protein (in grams) per 100 grams of milk. Default value is set based on typical protein content.</span>
+<span class="sd">    beef_protein : float</span>
+<span class="sd">        The amount of protein (in grams) per 100 grams of beef. Default value is set based on typical protein content.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    milk_protein_calculator(milk):</span>
+<span class="sd">        Calculates the total protein content in a given quantity of milk.</span>
+<span class="sd">        </span>
+<span class="sd">    beef_protein_calculator(beef):</span>
+<span class="sd">        Calculates the total protein content in a given quantity of beef.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    milk_protein : float, optional</span>
+<span class="sd">        The protein content percentage for milk. If not provided, defaults to a typical value.</span>
+<span class="sd">    beef_protein : float, optional</span>
+<span class="sd">        The protein content percentage for beef. If not provided, defaults to a typical value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">milk_protein</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">beef_protein</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">milk_protein</span> <span class="o">=</span> <span class="n">milk_protein</span> <span class="ow">or</span> <span class="mi">31</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beef_protein</span> <span class="o">=</span> <span class="n">beef_protein</span> <span class="ow">or</span> <span class="mi">169</span>
+
+
+<div class="viewcode-block" id="ProteinCalc.milk_protein_calculator">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.ProteinCalc.milk_protein_calculator">[docs]</a>
+    <span class="k">def</span> <span class="nf">milk_protein_calculator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">milk</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the total protein content based on the quantity of milk.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        milk : float</span>
+<span class="sd">            The quantity of milk (in grams) for which the protein content is to be calculated.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The total protein content (in grams) in the specified quantity of milk.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">milk_protein</span> <span class="o">*</span> <span class="n">milk</span></div>
+
+    
+
+<div class="viewcode-block" id="ProteinCalc.beef_protein_calculator">
+<a class="viewcode-back" href="../../autoapi/scenario_assessment/filter_tools/index.html#scenario_assessment.filter_tools.ProteinCalc.beef_protein_calculator">[docs]</a>
+    <span class="k">def</span> <span class="nf">beef_protein_calculator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beef</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the total protein content based on the quantity of beef.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        beef : float</span>
+<span class="sd">            The quantity of beef (in grams) for which the protein content is to be calculated.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float</span>
+<span class="sd">            The total protein content (in grams) in the specified quantity of beef.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">beef_protein</span> <span class="o">*</span> <span class="n">beef</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Colm Duffy.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

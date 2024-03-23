@@ -9,9 +9,11 @@ The latest iterations of GOBLIN systematically produce a range of environmental 
 
 Scenarios the meet a specified environmental objective are sorted and ranked. The cost to livestock output is prioritised, with the environmental parameters then factored at varios weights. 
 
-        climate_weight = .8 
-        eutrophication_weight = .7
-        ammonia_weight = .6
+        climate_weight = .4
+        eutrophication_weight = .3
+        ammonia_weight = .3
+
+These weights can be adjusted by the user.
 
 ## Installation
 
