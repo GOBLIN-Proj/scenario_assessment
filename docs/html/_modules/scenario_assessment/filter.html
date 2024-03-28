@@ -104,11 +104,11 @@
 <span class="sd">    livestock_products : DataFrame</span>
 <span class="sd">        A dataframe containing the total beef and milk output for each scenario compared to the baseline.</span>
 <span class="sd">    climate_weight : float, optional</span>
-<span class="sd">        The weighting applied to the climate change impact in the overall score. Default is None.</span>
+<span class="sd">        The weighting applied to the climate change impact in the overall score. Default is 0.5.</span>
 <span class="sd">    ammonia_weight : float, optional</span>
-<span class="sd">        The weighting applied to the ammonia emissions impact in the overall score. Default is None.</span>
+<span class="sd">        The weighting applied to the ammonia emissions impact in the overall score. Default is 0.2.</span>
 <span class="sd">    eutrophication_weight : float, optional</span>
-<span class="sd">        The weighting applied to the eutrophication impact in the overall score. Default is None.</span>
+<span class="sd">        The weighting applied to the eutrophication impact in the overall score. Default is 0.3.</span>
 
 <span class="sd">    Methods</span>
 <span class="sd">    -------</span>
@@ -140,7 +140,7 @@
 <span class="sd">    &gt;&gt;&gt; filter_results.search()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">gas</span><span class="p">,</span> <span class="n">data_dict</span><span class="p">,</span> <span class="n">climate_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ammonia_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">eutrophication_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">gas</span><span class="p">,</span> <span class="n">data_dict</span><span class="p">,</span> <span class="n">climate_weight</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ammonia_weight</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">eutrophication_weight</span><span class="o">=</span><span class="mf">0.3</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">gas</span> <span class="o">=</span> <span class="n">gas</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">total_gwp_gas</span> <span class="o">=</span> <span class="n">data_dict</span><span class="p">[</span><span class="s2">&quot;climate_change&quot;</span><span class="p">]</span>

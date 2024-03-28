@@ -24,7 +24,7 @@ Classes
 
 
 
-.. py:class:: FilterResults(target, gas, data_dict, climate_weight=None, ammonia_weight=None, eutrophication_weight=None)
+.. py:class:: FilterResults(target, gas, data_dict, climate_weight=0.5, ammonia_weight=0.2, eutrophication_weight=0.3)
 
 
    A class used to filter results based on a specified target for greenhouse gas reduction. It ranks scenarios based on their ability
@@ -68,19 +68,19 @@ Classes
 
    .. attribute:: climate_weight
 
-      The weighting applied to the climate change impact in the overall score. Default is None.
+      The weighting applied to the climate change impact in the overall score. Default is 0.5.
 
       :type: float, optional
 
    .. attribute:: ammonia_weight
 
-      The weighting applied to the ammonia emissions impact in the overall score. Default is None.
+      The weighting applied to the ammonia emissions impact in the overall score. Default is 0.2.
 
       :type: float, optional
 
    .. attribute:: eutrophication_weight
 
-      The weighting applied to the eutrophication impact in the overall score. Default is None.
+      The weighting applied to the eutrophication impact in the overall score. Default is 0.3.
 
       :type: float, optional
 
