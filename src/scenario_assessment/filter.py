@@ -28,11 +28,11 @@ class FilterResults:
     livestock_products : DataFrame
         A dataframe containing the total beef and milk output for each scenario compared to the baseline.
     climate_weight : float, optional
-        The weighting applied to the climate change impact in the overall score. Default is None.
+        The weighting applied to the climate change impact in the overall score. Default is 0.5.
     ammonia_weight : float, optional
-        The weighting applied to the ammonia emissions impact in the overall score. Default is None.
+        The weighting applied to the ammonia emissions impact in the overall score. Default is 0.2.
     eutrophication_weight : float, optional
-        The weighting applied to the eutrophication impact in the overall score. Default is None.
+        The weighting applied to the eutrophication impact in the overall score. Default is 0.3.
 
     Methods
     -------
@@ -64,7 +64,7 @@ class FilterResults:
     >>> filter_results.search()
     """
 
-    def __init__(self, target, gas, data_dict, climate_weight=None, ammonia_weight=None, eutrophication_weight=None):
+    def __init__(self, target, gas, data_dict, climate_weight=0.5, ammonia_weight=0.2, eutrophication_weight=0.3):
         self.target = float(target)
         self.gas = gas
         self.total_gwp_gas = data_dict["climate_change"]

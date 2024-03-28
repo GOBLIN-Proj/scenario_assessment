@@ -24,7 +24,7 @@ def main():
 
     climate = 0.3
     eutrophication = 0.3
-    ammonia = 0.7
+    ammonia = 0.4
 
     filter_class = FilterResults(target, gas, emission_dict, climate, eutrophication, ammonia)
 
