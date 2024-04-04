@@ -19,13 +19,6 @@ These weights can be adjusted by the user.
 
 Install from git hub. 
 
-When prompted enter your ```<username>``` and password, which is your ```<access_token>```.
-
-```<access_token>``` is provided by the repo manager.
-
-```<username>``` pass your own github username.
-
-
 ```bash
 pip install "scenario_assessment@git+https://github.com/GOBLIN-Proj/scenario_assessment.git@main" 
 
