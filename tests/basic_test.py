@@ -18,7 +18,7 @@ def main():
         "eutrophication":eutrophication,
         "protein_output": products}
 
-    print(emission_dict.items())
+
     target = 0.02
     gas = "CH4"
 
