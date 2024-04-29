@@ -24,6 +24,12 @@ pip install "scenario_assessment@git+https://github.com/GOBLIN-Proj/scenario_ass
 
 ```
 
+Install from PyPI
+
+```bash
+pip install scenario_assessment
+```
+
 ## Usage
 The results of the scenarios are passed, using a dictionary, to the FilterResults class. 
 
